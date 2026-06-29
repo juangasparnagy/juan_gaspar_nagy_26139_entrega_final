@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 //Nota, JpaRepository<Tipo, Id>, maneja recibiendo el Tipo de objeto y el tipo de Id. Usa Generics
 // osea, se podría usar con JpaRepository<Usuario, int>, para usuario, dni, por ejemplo, creo.
 
-public interface ArticuloRepositorio extends JpaRepository<Articulo, Long>  {
+public interface ArticuloRepository extends JpaRepository<Articulo, Long>  {
     
     // NADA DE ESTO ES NECESARIO YA A MENOS QUE AMPLÍE CON OTROS MÉTODOS EN UNA CLASE QUE IMPLEMENTE ESTOS MÉTODOS
     // List<Articulo> mostrarTodos();
