@@ -21,6 +21,8 @@ public class ArticuloController {
     // Sería como decir, "Es la clase que implementa la interfase Articuloservice"
     private final ArticuloServiceImp articuloservice;
 
+
+    // Si alcanza el tiempo probar hacer este método
     private void resuelve(){}
 
     @Autowired
@@ -34,7 +36,9 @@ public class ArticuloController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<Articulo> encontrarPorId(@PathVariable Long id){
-        resuelve();
+        //Articulo tempArticulo = new Articulo("artTemp1",100L,2000.0);
+        
+        //resuelve();
         // Como es un ResponseEntity, requiere de un map a una función Lambda y orElse. Y finalmente el build del notFound.
         // Faltaría estudiar bien el tema de como funciona el ResponseEntity
         return articuloservice.encontrarPorId(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
@@ -45,9 +49,14 @@ public class ArticuloController {
     }
 
     @PutMapping("/{id}")
-    public Articulo modificar(Articulo articulo, Long id){
-        return articuloservice.modificarArticulo(articulo, id);
+    public ResponseEntity<Articulo> modificar(@PathVariable Long id, @RequestBody Articulo articulo){
+        //aplico lógica de comercio para revisar si no existe ese id y dar return inmediato.
+        if(articuloservice.encontrarPorId(id).isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(articuloservice.modificarArticulo(articulo, id));
     }
+
     @DeleteMapping("/{id}")
     public void borrar(Long id){
         articuloservice.borrarArticulo(id);

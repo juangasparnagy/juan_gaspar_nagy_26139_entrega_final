@@ -23,7 +23,7 @@ public class Articulo {
     //getters
     public String getNombre(){return this.nombre;}
     public Long getId(){return this.id;}
-    public double precio(){return this.precio;}
+    public double getPrecio(){return this.precio;}
 
     //setters
 
@@ -39,7 +39,7 @@ public class Articulo {
 
     @Override
     public String toString(){
-        String mostrar = "nombre: "+getNombre() + ", Código: " + getId() + ", Precio: " + Double.toString(precio);
+        String mostrar = "nombre: "+getNombre() + ", Código: " + getId() + ", Precio: " + Double.toString(getPrecio());
         return mostrar;
     }
 
